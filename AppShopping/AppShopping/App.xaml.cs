@@ -7,10 +7,8 @@ namespace AppShopping
     public partial class App : Application
     {
         public App()
-        {
+        {           
             InitializeComponent();
-
-            Application.Current.UserAppTheme = OSAppTheme.Light;
 
             MainPage = new Menu();
         }
