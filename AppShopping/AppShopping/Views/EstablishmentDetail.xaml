@@ -22,28 +22,30 @@
     </Shell.TitleView>
 
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{Binding Establishment.Type, Converter={StaticResource EstablishnebtTypeConversor}}" Style="{StaticResource TitleType}" Margin="25,10,0,0"/>
-            <Label Text="{Binding Establishment.Name}" Style="{StaticResource TitkeName}" Margin="25,-5,0,0" />
-            <Frame Margin="25,0" BorderColor="{StaticResource BorderColor}">
-                <Grid RowDefinitions="auto,auto, 20,auto, auto, 20,auto,auto" ColumnDefinitions="1*, 1*, 1*, 1*, 1*, 1*" >
+        <ScrollView>
+            <StackLayout>
+                <Label Text="{Binding Establishment.Type, Converter={StaticResource EstablishnebtTypeConversor}}" Style="{StaticResource TitleType}" Margin="25,10,0,0"/>
+                <Label Text="{Binding Establishment.Name}" Style="{StaticResource TitkeName}" Margin="25,-5,0,0" />
+                <Frame Margin="25,0" BorderColor="{StaticResource BorderColor}">
+                    <Grid RowDefinitions="auto,auto, 10 ,auto, auto, 20,auto,auto" ColumnDefinitions="1*, 1*, 1*, 1*, 1*, 1*" >
 
-                    <Image Source="{Binding Establishment.Logo}" Grid.Column="0" Grid.ColumnSpan="2" WidthRequest="50"/>
-                    <Label Text="{Binding Establishment.Name}" Grid.Column="2" Grid.ColumnSpan="4" VerticalOptions="Center"/>
+                        <Image Source="{Binding Establishment.Logo}" Grid.Column="0" Grid.ColumnSpan="2" WidthRequest="50"/>
+                        <Label Text="{Binding Establishment.Name}" Grid.Column="2" Grid.ColumnSpan="4" VerticalOptions="Center"/>
 
-                    <Label Text="{Binding Establishment.Description}" Style="{StaticResource DescriptionEstablishment}" Grid.ColumnSpan="6" Grid.Row="1" Margin="10,30,10,30"/>
+                        <Label Text="{Binding Establishment.Description}" Style="{StaticResource DescriptionEstablishment}" Grid.ColumnSpan="6" Grid.Row="1" Margin="10"/>
 
-                    <Image Source="pin" Grid.RowSpan="2" Grid.Row="3" HeightRequest="60" VerticalOptions="Center"/>
-                    <Label Text="Localização" Style="{StaticResource Subtitle}" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" VerticalOptions="Center"/>
-                    <Label Text="{Binding Establishment.Address}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="5" />
+                        <Image Source="pin" Grid.RowSpan="2" Grid.Row="3" HeightRequest="48" VerticalOptions="Center"/>
+                        <Label Text="Localização" Style="{StaticResource Subtitle}" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" VerticalOptions="Center"/>
+                        <Label Text="{Binding Establishment.Address}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="5" />
 
 
-                    <Image Source="phone" Grid.RowSpan="2" Grid.Row="6" HeightRequest="58" VerticalOptions="Center"/>
-                    <Label Text="Telefone" Style="{StaticResource Subtitle}" Grid.Column="1"  Grid.Row="6" Grid.ColumnSpan="3"/>
-                    <Label Text="{Binding Establishment.Phone}" Grid.Column="1"  Grid.Row="7" Grid.ColumnSpan="4" />
+                        <Image Source="phone" Grid.RowSpan="2" Grid.Row="6" HeightRequest="48" VerticalOptions="Center"/>
+                        <Label Text="Telefone" Style="{StaticResource Subtitle}" Grid.Column="1"  Grid.Row="6" Grid.ColumnSpan="3"/>
+                        <Label Text="{Binding Establishment.Phone}" Grid.Column="1"  Grid.Row="7" Grid.ColumnSpan="4" />
 
-                </Grid>
-            </Frame>
-        </StackLayout>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
