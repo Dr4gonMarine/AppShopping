@@ -72,7 +72,7 @@
             </Style>
 
             <Style TargetType="Label" x:Key="TitleType">
-                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontSize" Value="20"/>
                 <Setter Property="TextColor" Value="{StaticResource ThemeB}"/>
             </Style>
 

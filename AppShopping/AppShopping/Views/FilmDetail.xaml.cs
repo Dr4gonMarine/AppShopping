@@ -1,5 +1,4 @@
-﻿using AppShopping.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,13 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace AppShopping.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Stores : ContentPage
+    public partial class FilmDetail : ContentPage
     {
-        public Stores()
+        public FilmDetail()
         {
             InitializeComponent();
-
-            //BindingContext = new StoresViewModel();
         }
     }
 }

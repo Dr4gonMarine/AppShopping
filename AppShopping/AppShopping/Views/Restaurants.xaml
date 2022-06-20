@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppShopping.Views.Restaurants"
              xmlns:viewModels="clr-namespace:AppShopping.ViewModels"
              xmlns:enums="clr-namespace:AppShopping.Libraries.Enums"
-             x:Name="StoresPage"
-             x:Class="AppShopping.Views.Stores">
+             x:Name="RestaurantsPage">
 
     <Shell.TitleView>
         <ContentView>
             <Image Source="TitleViewLogo" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="Center"/>
         </ContentView>
     </Shell.TitleView>
-    
+
     <ContentPage.BindingContext>
-        <viewModels:StoresViewModel>
+        <viewModels:RestaurantViewModel>
             <x:Arguments>
-                <enums:EstablishmentType>Store</enums:EstablishmentType>
+                <enums:EstablishmentType>Restaurant</enums:EstablishmentType>
             </x:Arguments>
-        </viewModels:StoresViewModel>
+        </viewModels:RestaurantViewModel>
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Content>
         <StackLayout>
             <Grid ColumnDefinitions="*,70" RowDefinitions="auto" Margin="10,0">
@@ -28,13 +28,14 @@
                 </Frame>
                 <Button Command="{Binding SearchCommand}" Text="OK" Grid.Column="1" Style="{StaticResource PrimaryButton}"/>
             </Grid>
+
             <CollectionView ItemsSource="{Binding Establishments}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <ContentView Padding="10">
                             <Frame BorderColor="{StaticResource BorderColor}" Padding="1" HasShadow="False">
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={x:Reference StoresPage}, Path=BindingContext.DetailCommand}" CommandParameter="{Binding .}"/>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference RestaurantsPage}, Path=BindingContext.DetailCommand}" CommandParameter="{Binding .}"/>
                                 </Frame.GestureRecognizers>
                                 <Grid ColumnDefinitions="1*,1,2*" RowDefinitions="1*,2*" Margin="5">
                                     <Image Source="{Binding Logo}" Grid.RowSpan="2" HeightRequest="85"/>

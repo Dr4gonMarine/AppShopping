@@ -34,12 +34,12 @@
 
                         <Label Text="{Binding Establishment.Description}" Style="{StaticResource DescriptionEstablishment}" Grid.ColumnSpan="6" Grid.Row="1" Margin="10"/>
 
-                        <Image Source="pin" Grid.RowSpan="2" Grid.Row="3" HeightRequest="48" VerticalOptions="Center"/>
-                        <Label Text="Localização" Style="{StaticResource Subtitle}" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" VerticalOptions="Center"/>
+                        <Image Source="pin" Grid.RowSpan="2" Grid.Row="3" HeightRequest="40" VerticalOptions="Center"/>
+                        <Label Text="Localização" Style="{StaticResource Subtitle}" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="5" VerticalOptions="Center"/>
                         <Label Text="{Binding Establishment.Address}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="5" />
 
 
-                        <Image Source="phone" Grid.RowSpan="2" Grid.Row="6" HeightRequest="48" VerticalOptions="Center"/>
+                        <Image Source="phone" Grid.RowSpan="2" Grid.Row="6" HeightRequest="40" VerticalOptions="Center"/>
                         <Label Text="Telefone" Style="{StaticResource Subtitle}" Grid.Column="1"  Grid.Row="6" Grid.ColumnSpan="3"/>
                         <Label Text="{Binding Establishment.Phone}" Grid.Column="1"  Grid.Row="7" Grid.ColumnSpan="4" />
 
