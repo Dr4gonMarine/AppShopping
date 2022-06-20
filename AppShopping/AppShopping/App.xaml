@@ -34,7 +34,8 @@
             <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
                 <Setter Property="BackgroundColor" Value="{StaticResource LightGray}"/>
             </Style>
-
+            
+            <!--Botoes-->
             <Style TargetType="Button" x:Key="PrimaryButton">
                 <Setter Property="FontFamily" Value="MontserratBold"/>
                 <Setter Property="FontSize" Value="18"/>
@@ -44,6 +45,16 @@
                 <Setter Property="BackgroundColor" Value="{StaticResource ThemeW}"/>
             </Style>
 
+            <Style TargetType="Button" x:Key="TicketPaidButton">
+                <Setter Property="FontFamily" Value="MontserratBold"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="TextColor" Value="{StaticResource PrimaryColor}"/>
+                <Setter Property="BorderColor" Value="{StaticResource PrimaryColor}"/>
+                <Setter Property="BorderWidth" Value="1"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource ThemeW}"/>
+            </Style>
+
+            <!--entry-->
             <Style TargetType="Entry">
                 <Setter Property="FontFamily" Value="MontserratRegular"/>
                 <Setter Property="FontSize" Value="12"/>
@@ -54,6 +65,7 @@
 
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="MontserratRegular"/>
+                <Setter Property="TextColor" Value="{StaticResource ThemeB}"/>
             </Style>
 
             <Style TargetType="Label" x:Key="MenuHeaderLabel">
@@ -83,7 +95,7 @@
             
             <Style TargetType="Label" x:Key="Subtitle">
                 <Setter Property="FontFamily" Value="MontserratSemiBold"/>
-                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="FontSize" Value="18"/>
                 <Setter Property="TextColor" Value="{StaticResource ThemeB}"/>
             </Style>
 
