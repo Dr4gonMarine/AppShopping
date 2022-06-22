@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:AppShopping.ViewModels"
+             x:Class="AppShopping.Views.News">
+    <ContentPage.BindingContext>
+        <viewModels:NewsViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <Shell.TitleView>
+        <ContentView>
+            <Image Source="TitleViewLogo" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="Center"/>
+        </ContentView>
+    </Shell.TitleView>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Novidades" Style="{StaticResource TitleType}" Margin="25,10,0,0"/>
+            <Label Text="Para você" Style="{StaticResource TitkeName}" Margin="25,-5,0,0" />
+
+            <CollectionView ItemsSource="{Binding News}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView Padding="15">
+                            <Frame BorderColor="{StaticResource BorderColor}" Padding="1" HasShadow="True">
+                                <StackLayout Padding="10">
+                                    <Label Text="{Binding Title}" Style="{StaticResource NameEstablishment}"/>
+                                    <Label Text="{Binding Description}" Style="{StaticResource DescriptionEstablishment}"/>
+                                </StackLayout>
+                            </Frame>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

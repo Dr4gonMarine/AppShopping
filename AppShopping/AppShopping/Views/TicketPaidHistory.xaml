@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:AppShopping.ViewModels" 
+             xmlns:converter="clr-namespace:AppShopping.Libraries.Converter"
+             x:Class="AppShopping.Views.TicketPaidHistory">
+    
+    <Shell.TitleView>
+        <ContentView>
+            <Image Source="TitleViewLogo" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="Center"/>
+        </ContentView>
+    </Shell.TitleView>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:PassingTimeConverter x:Key="PassingTimeConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <viewModels:TicketPaidHistoryViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Tickets" Style="{StaticResource TitleType}" Margin="25,10,0,0"/>
+            <Label Text="Pagos" Style="{StaticResource TitkeName}" Margin="25,-5,0,0" />
+
+            <CollectionView ItemsSource="{Binding Tickets}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView Padding="10">
+                            <Frame BorderColor="{StaticResource BorderColor}">
+                                <StackLayout>
+                                    <Label Style="{StaticResource NameEstablishment}" Padding="0,0,0,10">
+                                        <Label.Text>
+                                            <MultiBinding StringFormat="{}Ticket #{0}">
+                                                <Binding Path="Number"/>
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
+
+                                    <Label Style="{StaticResource DescriptionEstablishment}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Permanencia: "/>
+                                                <Span Text="{Binding .,Converter={StaticResource PassingTimeConverter}}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                    <Label Style="{StaticResource DescriptionEstablishment}">
+                                        <Label.Text>
+                                            <MultiBinding StringFormat="{}Entrada: {0}">
+                                                <Binding Path="StartDate"/>
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
+                                    <Label Style="{StaticResource DescriptionEstablishment}">
+                                        <Label.Text>
+                                            <MultiBinding StringFormat="{}Saída: {0}">
+                                                <Binding Path="EndDate"/>
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
+                                    <Label Style="{StaticResource Subtitle}" FontSize="16">
+                                        <Label.Text>
+                                            <MultiBinding StringFormat="{}Valor: R$ {0}">
+                                                <Binding Path="Price"/>
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
+                                </StackLayout>
+                            </Frame>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

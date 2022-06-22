@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:control="clr-namespace:Xamarin.Forms.MaskedEntry;assembly=Xamarin.Forms.MaskedEntry"
              x:Class="AppShopping.App">
     <Application.Resources>
         <ResourceDictionary>
@@ -59,6 +60,12 @@
                 <Setter Property="FontFamily" Value="MontserratRegular"/>
                 <Setter Property="FontSize" Value="12"/>
                 <Setter Property="TextColor" Value="{StaticResource ThemeB}"/>
+            </Style>
+            <Style TargetType="control:MaskedEntry">
+                <Setter Property="FontFamily" Value="MontserratRegular"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="PlaceholderColor" Value="Black"/>
+                <Setter Property="Keyboard" Value="Numeric"/>
             </Style>
 
             <!--Label-->

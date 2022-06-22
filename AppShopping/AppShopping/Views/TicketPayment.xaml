@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:AppShopping.ViewModels" 
+             xmlns:converter="clr-namespace:AppShopping.Libraries.Converter"
+             xmlns:control="clr-namespace:Xamarin.Forms.MaskedEntry;assembly=Xamarin.Forms.MaskedEntry"
+             x:Class="AppShopping.Views.TicketPayment">
+
+    <Shell.TitleView>
+        <ContentView>
+            <Image Source="TitleViewLogo" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="Center"/>
+        </ContentView>
+    </Shell.TitleView>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:PassingTimeConverter x:Key="PassingTimeConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <viewModels:TicketPaymentViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Pague o seu " Style="{StaticResource TitleType}" Margin="25,10,0,0"/>
+            <Label Text="Ticket" Style="{StaticResource TitkeName}" Margin="25,-5,0,0" />
+
+            <!--Infomações do ticket-->
+            <ContentView Padding="10">
+                <Frame BorderColor="{StaticResource BorderColor}">
+                    <StackLayout>
+                        <Label Style="{StaticResource NameEstablishment}" Padding="0,0,0,10">
+                            <Label.Text>
+                                <MultiBinding StringFormat="{}Ticket #{0}">
+                                    <Binding Path="Ticket.Number"/>
+                                </MultiBinding>
+                            </Label.Text>
+                        </Label>
+
+                        <Label Style="{StaticResource DescriptionEstablishment}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Permanencia: "/>
+                                    <Span Text="{Binding Ticket,Converter={StaticResource PassingTimeConverter}}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <Label Style="{StaticResource DescriptionEstablishment}">
+                            <Label.Text>
+                                <MultiBinding StringFormat="{}Entrada: {0}">
+                                    <Binding Path="Ticket.StartDate"/>
+                                </MultiBinding>
+                            </Label.Text>
+                        </Label>
+                        <Label Style="{StaticResource DescriptionEstablishment}">
+                            <Label.Text>
+                                <MultiBinding StringFormat="{}Saída: {0}">
+                                    <Binding Path="Ticket.EndDate"/>
+                                </MultiBinding>
+                            </Label.Text>
+                        </Label>
+                        <Label Style="{StaticResource Subtitle}" FontSize="16">
+                            <Label.Text>
+                                <MultiBinding StringFormat="{}Valor: R$ {0}">
+                                    <Binding Path="Ticket.Price"/>
+                                </MultiBinding>
+                            </Label.Text>
+                        </Label>
+                    </StackLayout>
+                </Frame>
+            </ContentView>
+
+            <!--Cartao de credito-->
+            <ContentView Padding="10">
+                <Frame BorderColor="{StaticResource BorderColor}">
+                    <StackLayout>
+                        <Label Text="Cartão de crédito" Style="{StaticResource NameEstablishment}"/>
+                        <Label Text="Coloque o cartao de para pagar o estacionamento" Style="{StaticResource DescriptionEstablishment}"/>
+
+                        <Frame Padding="15,0" HasShadow="False" BorderColor="{StaticResource BorderColor}" HeightRequest="40">
+                            <Entry Placeholder="Nome no cartão" Text="{Binding CreditCard.Name}" PlaceholderColor="Black" FontSize="18"/>
+                        </Frame>
+
+                        <Frame Padding="15,0" HasShadow="False" BorderColor="{StaticResource BorderColor}"  HeightRequest="40">
+                            <control:MaskedEntry Text="{Binding CreditCard.Number}" Placeholder="Número do cartão" Mask="XXXX XXXX XXXX XXXX"/>
+                        </Frame>
+
+                        <Grid ColumnDefinitions="1*,1*" ColumnSpacing="10">
+                            <Frame Padding="15,0" HasShadow="False" BorderColor="{StaticResource BorderColor}"  HeightRequest="40">
+                                <control:MaskedEntry Placeholder="Validade" Mask="XX/XXXX" Text="{Binding CreditCard.ExpireDate}" />
+                            </Frame>
+                            <Frame Padding="15,0" HasShadow="False" BorderColor="{StaticResource BorderColor}"  Grid.Column="1">
+                                <control:MaskedEntry Placeholder="Cod. Segurança" Mask="XXX" Text="{Binding CreditCard.SecurityCode}"/>
+                            </Frame>
+                        </Grid>
+
+                        <Frame Padding="15,0" HasShadow="False" BorderColor="{StaticResource BorderColor}"  HeightRequest="40">
+                            <control:MaskedEntry Text="{Binding CreditCard.Document}" Placeholder="Número do CPF" Mask="XXX.XXX.XXX-XX" />
+                        </Frame>
+                        <Label Text="Usaremos este CPF para emitir nota legal" Style="{StaticResource DescriptionEstablishment}" FontSize="10"/>
+                        
+                    
+                    </StackLayout>
+                </Frame>
+            </ContentView>
+            <Button Text="Pagar" Command="{Binding PayCommand}" Style="{StaticResource TicketPaidButton}" Margin="30,0"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

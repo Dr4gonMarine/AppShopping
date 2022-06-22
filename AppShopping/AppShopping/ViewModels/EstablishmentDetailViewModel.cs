@@ -12,7 +12,7 @@ namespace AppShopping.ViewModels
 {
     [QueryProperty("establishmentSerialized", "establishmentSerialized")]
     public class EstablishmentDetailViewModel : BaseViewModel
-    {
+    {        
         public Establishment Establishment { get; set; }
         public string establishmentSerialized 
         { 

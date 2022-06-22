@@ -23,7 +23,7 @@
 
             <Grid ColumnDefinitions="*,70" RowDefinitions="auto" Margin="10,10">
                 <Frame Padding="15,0" HasShadow="False" BorderColor="{StaticResource BorderColor}">
-                    <control:MaskedEntry Text="{Binding TicketNumber}" Mask="XXX XXX XXX XXX" Keyboard="Numeric" Placeholder="Escanear Ticket" TextColor="Black">
+                    <control:MaskedEntry Text="{Binding TicketNumber}" Mask="XXX XXX XXX XXX" Placeholder="Escanear Ticket">
                         <control:MaskedEntry.Behaviors>
                             <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding TicketTextChangedCommand}"/>
                         </control:MaskedEntry.Behaviors>

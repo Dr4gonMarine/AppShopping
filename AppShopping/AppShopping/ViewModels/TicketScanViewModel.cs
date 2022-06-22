@@ -40,7 +40,7 @@ namespace AppShopping.ViewModels
                     await Shell.Current.Navigation.PopAsync();
                     Message = result.Text;
                     TicketProccess(result.Text);
-                });
+                });                
             };
 
             await Shell.Current.Navigation.PushAsync(scanPage);
@@ -49,9 +49,13 @@ namespace AppShopping.ViewModels
         {
             try
             {
-               var ticket = new TicketService().GetTicketInfo(ticketNumber);
+                var ticket = new TicketService().GetTicketInfo(ticketNumber);
+                Message = "";
+                Shell.Current.GoToAsync($"ticket/payment?number={ticketNumber}");                
+
             }catch (Exception e) 
             {
+                
                 Message = e.Message;
             }
         }
@@ -65,7 +69,7 @@ namespace AppShopping.ViewModels
         }
         private void TicketPaidHistory()
         {
-            Shell.Current.GoToAsync("ticket/paid/history");
+            Shell.Current.GoToAsync("ticket/paid/history");            
         }
     }
 }
